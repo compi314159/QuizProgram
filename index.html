@@ -1,0 +1,91 @@
+<html>
+  <head>
+    <style>
+    h2 {
+      margin-left:200px;
+      font-size: 50px;
+      }
+    body {font-family: "Courier New", Courier, monospace}
+    #SubmitButton {font-family: "Courier New", Courier, monospace}
+    #SubmitButton {background-color: white;}
+    #answer {font-family: "Courier New", Courier, monospace}
+    #AnswerKey {font-size: 20px}
+    #score {font-size: 25px}
+    body {
+    animation-name: color;
+    animation-duration: 100s;
+  }
+
+    @keyframes color {
+    0%   {background-color:red; left:0px; top:0px;}
+    25%  {background-color:yellow; left:200px; top:0px;}
+    50%  {background-color:green; left:200px; top:200px;}
+    75%  {background-color:blue; left:0px; top:200px;}
+    100% {background-color:purple; left:0px; top:0px;}
+  }
+    </style>
+    <title>Quiz Program</title>
+    <script>
+    var score = 0;
+    var questionCount = 0;
+      function gradeQuiz()
+      {
+        var ans = document.getElementById("answer").value;
+        if(questionCount == 0)
+          {
+          if(ans == "3.141592653")
+              {
+                score = score + 1;
+              }
+            questionCount = questionCount + 1
+            document.getElementById("question").innerHTML = "What year was the United Nations formed?";//Question 2
+            document.getElementById("answer").value = ""
+          }
+
+          else if (questionCount == 1)
+            {
+              if(ans == "1945")
+                {
+                  score = score + 1;
+                }
+              questionCount = questionCount + 1
+              document.getElementById("question").innerHTML = "What does E in E = mc² stand for?";//Question 3
+              document.getElementById("answer").value = ""
+            }
+
+             else if(questionCount == 2)
+              {
+                if(ans.toLowerCase() == "energy")
+                  {
+                    score = score + 1;
+                  }
+                questionCount = questionCount + 1
+              }
+                if (questionCount == 3)
+                  {
+                    end()
+                  }
+      }
+      function end()
+      {
+          if (questionCount == 3)
+          {
+            document.getElementById('AnswerKey').style.visibility = "visible"
+            document.getElementById('question').style.visibility = "hidden"
+            document.getElementById('SubmitButton').style.visibility = "hidden"
+            document.getElementById('answer').style.visibility = "hidden"
+            document.getElementById('score').innerHTML  = "Your score is: " +  score + "/3"
+          }
+      }
+    </script>
+  </head>
+
+  <body>
+    <h2>Fun Quiz!</h2>
+    <span id = "question">What are the first 10 digits of pi? (do not round)</span>
+    <input type = "text" id = "answer">
+    <input type = "button" value = "Submit" onclick = "gradeQuiz()" id = "SubmitButton"><br>
+    <span id = "score" style ="visibility:visible"></span><br>
+    <span id = "AnswerKey" style ="visibility:hidden"><br><b>Correct Answers:</b><br>1.3.141592653<br>2.1945<br>3.Energy<br></span>
+  </body>
+</html>
